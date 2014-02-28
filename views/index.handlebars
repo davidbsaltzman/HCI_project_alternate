@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>LifeUp</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/home.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+	<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+	<script type="text/javascript" src="js/jquery.countdown.js"></script>
+
+    <script type="text/javascript" src="js/vars.js"></script>
+	<!-- this is a comment in HTML -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->        
+</head>
+
+<body>
+	<div class="container">
+		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+		<!-- p means paragraph -->
+		<!-- <h1 class = "header">LifeUP</h1> -->
+
+        <div style="text-align: center">
+            <div class="btn-group">
+              <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+            </div>
+        </div>
+
+		<div class = "sub_header1"><a href="#"></a>
+			<img class = "image" src="images/uptrans.png" />
+			<div>
+				<div class= "time_with_title">Life Expectancy:</div>
+				<div class = "time" id="lifespan">{{expLifeSpan}} years </div>
+			</div>
+		</div>
+		<div class = "sub_header2">
+			<div class = "count_down_title">Life Remaining:</div>
+			<div class = "count_down"> </div>
+		</div>
+		<div class="btn btn-primary btn-large button" onclick="window.location='/log';">Log Activity</div>
+		<div class="btn btn-primary btn-large button" onclick="window.location='/activity';">My Activity</div>
+		<div class="btn btn-primary btn-large button" onclick="window.location='/settings';">Edit Options</div>
+
+	<script>
+		var lifeExp = {{expLifeSpan}};
+		var currentAge = {{curAge}};
+        if (displayStyle == 1)
+		  $('.sub_header2').hide();
+        else if (displayStyle == 2)
+          $('.sub_header1').hide();
+		var newYear = new Date(); 
+		newYear = new Date(newYear.getFullYear() + lifeExp - currentAge, 1 - 1, 1);
+		$('.count_down').countdown({until: newYear, compact: true, 
+    		format: 'YOWDHMS', description: ''});
+		$('.sub_header1').click(function() {
+  			$('.sub_header1').hide();
+  			$('.sub_header2').show();
+            displayStyle = 2;
+		});
+		$('.sub_header2').click(function() {
+  			$('.sub_header2').hide();
+  			$('.sub_header1').show();
+            displayStyle = 1;
+		});
+	</script>
+</body>
+</html>

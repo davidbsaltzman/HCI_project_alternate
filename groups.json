@@ -1,0 +1,40 @@
+{
+    "groups": [
+        {   "name": "Diet",
+            "id": "Diet",
+            "value": "0",
+            "items": [
+                { "name": "I ate veggies", "id":"I_ate_veggies", "value":"3", "done_today":"0"},
+                { "name": "I drank water", "id": "I_drank_water", "value":"2", "done_today":"0"},
+                { "name": "I ate when hungry", "id":"I_ate_when_hungry", "value":"2", "done_today":"1"}
+            ]
+        },
+        {   "name": "Exercise",
+            "id": "Exercise",
+            "value": "0",
+            "items": [
+                { "name": "I ran", "id":"I_ran", "value":"3", "done_today":"0"},
+                { "name": "I worked out", "id": "I_worked_out", "value":"2", "done_today":"1"},
+                { "name": "I moved around", "id":"I_moved_around", "value":"3", "done_today":"0"}
+            ]
+        },
+        {   "name": "Social",
+            "id": "Social",
+            "value": "0",
+            "items": [
+                { "name": "I laughed", "id":"I_laughed", "value":"2", "done_today":"1"},
+                { "name": "I talked to people", "id": "I_talked_to_people", "value":"1", "done_today":"1"},
+                { "name": "I was generous", "id":"I_was_generous", "value":"1", "done_today":"1"}
+            ]
+        },
+        {   "name": "Lifestyle",
+            "id": "Lifestyle",
+            "value": "0",
+            "items": [
+                { "name": "I slept enough", "id":"I_slept_enough", "value":"3", "done_today":"0"},
+                { "name": "I flossed", "id": "I_flossed", "value":"1", "done_today":"0"},
+                { "name": "I meditated", "id":"I_meditated", "value":"2", "done_today":"0"}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,217 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>LifeUp</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/home.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+	<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+	<script type="text/javascript" src="js/jquery.countdown.js"></script>
+
+	<script type="text/javascript" src="js/vars.js"></script>
+	<script>
+		var next_group_id = {{max_group_id}};
+		next_group_id = next_group_id+1;
+		var next_item_id = {{max_item_id}};
+		next_item_id = next_item_id + 1;
+	</script>
+	<!-- this is a comment in HTML -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  <body>
+  	<div class="container">
+  		<!-- <h1 class = "header">LifeUP | Settings</h1> -->
+         <div style="text-align: center">
+            <div class="btn-group">
+              <div class="btn btn-default headerbtn" onclick="window.location='/';">LifeUp</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/log'">Log</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/activity'">Activity</div>
+              <div class="btn btn-default headerbtn" onclick="window.location='/settings'">Options</div>
+            </div>
+        </div>
+  		<div class="btn btn-info btn-large add_group" data-toggle="modal" data-target="#groupModal">Add a Group</div>
+
+  		<div class="modal fade" id="removeItem">
+  			<div class="modal-dialog">
+  				<div class="modal-content">
+  					<div class="modal-header">
+  						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  						<h4 class="modal-title">Do you want to remove the item?</h4>
+  					</div>
+  					<div class="modal-footer footer">
+  						<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+  						<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="remove_item();">Yes</button>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+
+  		<div class="modal fade" id="removeGroup">
+  			<div class="modal-dialog">
+  				<div class="modal-content">
+  					<div class="modal-header">
+  						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  						<h4 class="modal-title">Do you want to remove the group?</h4>
+  					</div>
+  					<div class="modal-footer footer">
+  						<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+  						<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="remove_group();">Yes</button>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+
+  		<div class="modal fade" id="groupModal">
+  			<div class="modal-dialog">
+  				<div class="modal-content">
+  					<div class="modal-header">
+  						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  						<h4 class="modal-title">Group name:</h4>
+  					</div>
+  					<textarea class="group_name"></textarea>
+  					<div class="modal-footer footer">
+  						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  						<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_group();">Add Group</button>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+
+  		<div class='groups'>
+  			{{#each groups}}
+  			<div class="panel panel-info" id="group{{id}}">
+  				<div class="panel-heading">
+  					<h4 class="panel-title">
+  						{{name}}
+  						<span class="glyphicon glyphicon-minus icons" data-toggle="modal" data-target="#removeGroup" onclick="set_remove_group_id('{{id}}', '{{name}}');"></span>
+  						<span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal{{id}}"></span>
+  					</h4>
+  				</div>
+
+  				<div class="panel-body">
+  					<ul class="list-group">
+  						{{#each items}}
+  						<li class="list-group-item" id="{{id}}">
+  							{{name}}
+  							<span class="glyphicon glyphicon-minus icons" data-toggle="modal" data-target="#removeItem" onclick="set_remove_item_id('{{id}}', '{{name}}');"></span>
+  						</li>
+  						{{/each}}
+  					</ul>
+  				</div>
+  			</div>
+  			<div class="modal fade" id="modal{{id}}">
+  				<div class="modal-dialog">
+  					<div class="modal-content">
+  						<div class="modal-header">
+  							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  							<h4 class="modal-title">Item name:</h4>
+  						</div>
+  						<textarea class="item_name" onkeypress="add_item_keypress('{{id}}', '{{name}}');"></textarea>
+  						<div class="modal-footer footer">
+  							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  							<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_item('{{id}}');">Add</button>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  			{{/each}}
+  		</div>
+  	</div>
+
+  	<div class="btn btn-info btn-large button" onclick="window.location='/';">Save</div>
+
+  	<script>
+
+  		$("#groupModal .group_name").keypress(function(e) {
+  			if (e.keyCode == 13) {
+        		add_group();
+        		$('#groupModal').modal('hide');
+    		}	
+		});
+
+  		function add_item_keypress(id){
+  			var keycode = (window.event) ? window.event.keyCode : e.keyCode;
+  			if(keycode == 13) {
+				add_item(id);
+				$('#modal'+id).modal('hide');
+  			}
+  		}
+  		var to_remove_group_id;
+  		var to_remove_item_id;
+
+  		function set_remove_item_id(id, name){
+  			to_remove_item_id = id;
+  			$('#removeItem .modal-title').html('Do you want to remove \''+name+'\'?');
+  		}
+  		function set_remove_group_id(id, name){
+  			to_remove_group_id = id;
+  			$('#removeGroup .modal-title').html('Do you want to remove \''+name+'\'?');
+  		}
+  		function remove_group(){
+  			$('#group'+to_remove_group_id).remove();
+  			$.post('/settings/removeGroup', {'value':to_remove_group_id});
+  		}
+
+  		function remove_item(){
+  			$('#'+to_remove_item_id).remove();
+  			$.post('/settings/removeItem', {'value':to_remove_item_id});
+  		}
+
+  		function add_item(id){
+  			var item_name = $('#modal'+id+' .item_name').val();
+  			var itemHTML = '<li class="list-group-item" id="'+next_item_id+'">' + item_name +
+  			'<span class="glyphicon glyphicon-minus icons" data-toggle="modal" data-target="#removeItem" onclick="set_remove_item_id(\''+next_item_id+'\', \''+item_name+'\');"></span>';
+  			$('#group'+id+' .list-group').prepend(itemHTML);
+  			var json = {
+  				'name': item_name,
+  				'id': next_item_id,
+  				'group_id': id,
+  				'user_id': 1
+  			};
+  			next_item_id = next_item_id + 1;
+  			$.post('/settings/newItem', json);
+  		}
+
+  		function add_group(){
+  			var group_name = $('#groupModal .group_name').val();
+  			var groupHTML = 
+  			'<div class="panel panel-info" id="group'+next_group_id+'"><div class="panel-heading"><h4 class="panel-title">'
+  			+group_name+
+  			'<span class="glyphicon glyphicon-minus icons" data-toggle="modal" data-target="#removeGroup" onclick="set_remove_group_id(\''+next_group_id+'\', \''+group_name+'\');"></span><span class="glyphicon glyphicon-plus icons" data-toggle="modal" data-target="#modal'
++next_group_id+
+'"></span></h4></div><div class="panel-body"><ul class="list-group"></ul></div></div><div class="modal fade" id="modal'
++next_group_id+
+'"><div class="modal-dialog"><div class="modal-content"><div class="modal-header">'
++'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'
++'<h4 class="modal-title">Item name:</h4></div><textarea class="item_name" onkeypress="add_item_keypress(\''+next_group_id+'\', \''+group_name+'\');"></textarea>'
++'<div class="modal-footer footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
++'<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add_item(\''
+	+next_group_id+
+	'\');">Add</button></div></div></div></div>';
+$('.groups').prepend(groupHTML);
+var json = {
+	'name': group_name,
+	'id': next_group_id,
+	'user_id': 1
+};
+next_group_id = next_group_id+1;
+$.post('/settings/newGroup', json);
+}
+</script>
+</body>
+</html>
+
+

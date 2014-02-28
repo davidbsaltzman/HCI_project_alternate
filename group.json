@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Diet",
+		"id": 1,
+		"user_id": 1
+	},
+	{
+		"name": "Exercise",
+		"id": 2,
+		"user_id": 1
+	},
+	{
+		"name": "Social",
+		"id": 3,
+		"user_id": 1
+	},
+	{
+		"name": "Lifestyle",
+		"id": 4,
+		"user_id": 1
+	}
+]

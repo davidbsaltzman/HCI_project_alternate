@@ -1,0 +1,74 @@
+[
+	{
+		"name": "I ate veggies",
+		"id": 1,
+		"user_id": 1,
+		"group_id": 1
+	},
+	{
+		"name": "I drank water",
+		"id": 2,
+		"user_id": 1,
+		"group_id": 1
+	},
+	{
+		"name": "I ate when hungry",
+		"id": 3,
+		"user_id": 1,
+		"group_id": 1
+	},
+	{
+		"name": "I ran",
+		"id": 4,
+		"user_id": 1,
+		"group_id": 2
+	},
+	{
+		"name": "I worked out",
+		"id": 5,
+		"user_id": 1,
+		"group_id": 2
+	},
+	{
+		"name": "I moved around",
+		"id": 6,
+		"user_id": 1,
+		"group_id": 2
+	},
+	{
+		"name": "I laughed",
+		"id": 7,
+		"user_id": 1,
+		"group_id": 3
+	},
+	{
+		"name": "I talked to people",
+		"id": 8,
+		"user_id": 1,
+		"group_id": 3
+	},
+	{
+		"name": "I was generous",
+		"id": 9,
+		"user_id": 1,
+		"group_id": 3
+	},
+	{
+		"name": "I slept enough",
+		"id": 10,
+		"user_id": 1,
+		"group_id": 4
+	},
+	{
+		"name": "I flossed",
+		"id": 11,
+		"user_id": 1,
+		"group_id": 4
+	},
+	{
+		"name": "I meditated",
+		"id": 12,
+		"user_id": 1,
+		"group_id": 4
+	}
+]

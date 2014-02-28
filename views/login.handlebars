@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>LifeUp</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/home.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+	<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+	<script type="text/javascript" src="js/jquery.countdown.js"></script>
+	<!-- this is a comment in HTML -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->        
+</head>
+
+<body>
+	<div class="container">
+		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
+		<!-- p means paragraph -->
+		<h1 class = "header">LifeUP</h1>
+		<div class = "login">
+			<div>User Name:</div>
+			<input></input>
+			<div>PassWord:</div>
+			<input></input>
+		</div>
+		<div class="btn btn-primary login_button" onclick="window.location='/index';">Login</div>
+	</div>
+	<script>
+		$('.sub_header2').hide();
+		var newYear = new Date(); 
+		newYear = new Date(newYear.getFullYear() + 48, 1 - 1, 1);
+		$('.sub_header2').countdown({until: newYear, compact: true, 
+    		format: 'YOWDHMS', description: ''});
+		$('.sub_header1').click(function() {
+  			$('.sub_header1').hide();
+  			$('.sub_header2').show();
+		});
+		$('.sub_header2').click(function() {
+  			$('.sub_header2').hide();
+  			$('.sub_header1').show();
+		});
+	</script>
+</body>
+</html>
